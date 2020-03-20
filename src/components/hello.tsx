@@ -29,7 +29,10 @@ function Hello({fruits, deleteFruit}: Props) {
 }
 
 const mapStateToProps = (state: State): StateProps => ({
-  fruits: state.fruits
+  fruits: (() => {
+    console.log('### mapStateToProps',state);
+    return state.fruits
+  })()
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<DeleteFruitAction>): DispatchProps => ({
